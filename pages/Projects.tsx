@@ -14,8 +14,6 @@ const Projects = (props: ProjectsProps) => {
 		new Array(projects.length).fill(false)
 	);
 
-	// const [, setSelectedIndex] = useState(0);
-
 	const handleMouseEnter = (index: number) => {
 		setHoverStates((prevStates) => {
 			const updatedStates = [...prevStates].map(
