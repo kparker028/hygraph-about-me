@@ -1,6 +1,4 @@
-import type { GetStaticProps } from "next";
-
-export const getProjectsData: GetStaticProps<ProjectProps> = async () => {
+export const getProjectsData = async () => {
 	const query = `
   query {
    projects {
@@ -9,6 +7,7 @@ export const getProjectsData: GetStaticProps<ProjectProps> = async () => {
     projectImage {
       url
     }
+    slug
   }
 }
   `;
@@ -19,11 +18,35 @@ export const getProjectsData: GetStaticProps<ProjectProps> = async () => {
 	});
 	const { data } = await res.json();
 
-	return {
-		props: {
-			projects: data.projects,
-		},
-	};
+	return data.projects;
 };
 
-export default getProjectsData;
+export const getProjectData = async (slug: string) => {
+	const query = `
+  query GetProjectBySlug($slug: String!) {
+	    project(where: {slug: $slug}) {
+	      projectName
+	      description
+	      projectImage {
+	        url
+	      }
+	    }
+    }
+	`;
+
+	const variables = {
+		slug,
+	};
+
+	const body = { query, variables };
+	const res = await fetch(process.env.HYGRAPH_API_URL, {
+		method: "POST",
+		body: JSON.stringify(body),
+	});
+	const { data, errors } = await res.json();
+
+	if (errors) {
+		return null;
+	}
+	return data.project;
+};
