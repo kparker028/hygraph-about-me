@@ -8,6 +8,7 @@
 // 1. https://the-guild.dev/graphql/codegen Read these docs and follow along
 //    Then you will have your queries typed
 import { getProjectDataWTypes } from "@/Fetching/projectsData";
+import Image from "next/image";
 
 const ExpandedProject = async ({ params }: { params: { slug: string } }) => {
 	const project = await getProjectDataWTypes(params);
@@ -24,16 +25,13 @@ const ExpandedProject = async ({ params }: { params: { slug: string } }) => {
 				rowGap: "12px",
 			}}
 		>
-			{/** Change this to use the Image component from next/image */}
-			<div
-				style={{
-					backgroundImage: `url(${project?.projectImage?.url})`,
-					width: "600px",
-					height: "600px",
-					borderRadius: "16px",
-					backgroundSize: "cover",
-					backgroundPosition: "center",
-				}}
+			<Image
+				src={project?.projectImage?.url ?? ""}
+				alt='#'
+				width={600}
+				height={600}
+				loading='lazy'
+				style={{ borderRadius: "16px" }}
 			/>
 			<h1>{project?.projectName}</h1>
 			<h2 style={{ color: "#e2e2e2", textAlign: "center" }}>
