@@ -1,15 +1,16 @@
-import getAboutMeData from "@/Fetching/aboutMeData";
+import { GetAboutMe } from "@/Fetching/aboutMeData";
 import React from "react";
 
 const AboutMe = async () => {
-	const data = await getAboutMeData();
+	const data = await GetAboutMe();
 	console.log(data);
+	const { blogPage } = data;
 	return (
 		<div>
-			<p>{data.title}</p>
-			<p>{data.description}</p>
-			<p>{data.slug} </p>
-			<img alt='@' src={data.heroImage.url} />
+			<p>{blogPage?.title}</p>
+			<p>{blogPage?.description}</p>
+			<p>{blogPage?.slug} </p>
+			<img alt='@' src={blogPage?.heroImage?.url} />
 		</div>
 	);
 };
