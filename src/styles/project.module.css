@@ -23,6 +23,13 @@
 	align-items: center;
 	flex-direction: column;
 	border-radius: inherit;
+	transition: 0.3s ease;
+	background-color: #00000087;
+}
+
+.titleContainer:hover {
+	transition: 0.3s ease;
+	background-color: #ffffff1c;
 }
 
 .title {

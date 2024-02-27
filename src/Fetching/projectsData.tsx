@@ -1,29 +1,16 @@
-import type { GetStaticProps } from "next";
+import { graphqlClient } from "@/graphql/client";
+import {
+	GetProjectBySlugDocument,
+	GetProjectBySlugQueryVariables,
+	GetProjectsDocument,
+} from "@/graphql/generated/graphql";
 
-export const getProjectsData: GetStaticProps<ProjectProps> = async () => {
-	const query = `
-  query {
-   projects {
-    projectName
-    description
-    projectImage {
-      url
-    }
-  }
-}
-  `;
-	const body = { query };
-	const res = await fetch(process.env.HYGRAPH_API_URL, {
-		method: "POST",
-		body: JSON.stringify(body),
-	});
-	const { data } = await res.json();
-
-	return {
-		props: {
-			projects: data.projects,
-		},
-	};
+export const getProjectDataWTypes = async (
+	variables: GetProjectBySlugQueryVariables
+) => {
+	const res = await graphqlClient.request(GetProjectBySlugDocument, variables);
+	return res.project;
 };
 
-export default getProjectsData;
+export const getProjects = async () =>
+	await graphqlClient.request(GetProjectsDocument);
