@@ -11,8 +11,14 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * 3. It does not support dead code elimination, so it will add unused operations.
  *
  * Therefore it is highly recommended to use the babel or swc plugin for production.
+ * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
-const documents = {
+type Documents = {
+    "\n\tquery GetAboutMe {\n\t\tblogPage(where: { slug: \"about-me\" }) {\n\t\t\ttitle\n\t\t\tdescription\n\t\t\tslug\n\t\t\theroImage {\n\t\t\t\turl\n\t\t\t}\n\t\t}\n\t}\n": typeof types.GetAboutMeDocument,
+    "\n\tquery GetProjectBySlug($slug: String!) {\n\t\tproject(where: { slug: $slug }) {\n\t\t\tprojectName\n\t\t\tdescription\n\t\t\tprojectImage {\n\t\t\t\turl\n\t\t\t}\n\t\t}\n\t}\n": typeof types.GetProjectBySlugDocument,
+    "\n\tquery GetProjects {\n\t\tprojects {\n\t\t\tprojectName\n\t\t\tdescription\n\t\t\tprojectImage {\n\t\t\t\turl\n\t\t\t}\n\t\t\tslug\n\t\t}\n\t}\n": typeof types.GetProjectsDocument,
+};
+const documents: Documents = {
     "\n\tquery GetAboutMe {\n\t\tblogPage(where: { slug: \"about-me\" }) {\n\t\t\ttitle\n\t\t\tdescription\n\t\t\tslug\n\t\t\theroImage {\n\t\t\t\turl\n\t\t\t}\n\t\t}\n\t}\n": types.GetAboutMeDocument,
     "\n\tquery GetProjectBySlug($slug: String!) {\n\t\tproject(where: { slug: $slug }) {\n\t\t\tprojectName\n\t\t\tdescription\n\t\t\tprojectImage {\n\t\t\t\turl\n\t\t\t}\n\t\t}\n\t}\n": types.GetProjectBySlugDocument,
     "\n\tquery GetProjects {\n\t\tprojects {\n\t\t\tprojectName\n\t\t\tdescription\n\t\t\tprojectImage {\n\t\t\t\turl\n\t\t\t}\n\t\t\tslug\n\t\t}\n\t}\n": types.GetProjectsDocument,

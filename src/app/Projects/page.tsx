@@ -4,16 +4,19 @@ import styles from "../../styles/project.module.css";
 import Link from "next/link";
 
 const Projects = async () => {
-	const data = await getProjects();
+	const projects = await getProjects();
 
 	return (
 		<div className={styles.section}>
-			{data.projects?.map((project, index) => {
+			{projects?.map((project) => {
 				return (
-					<Link href='/Projects/[slug]' as={`/Projects/${project.slug}`}>
+					<Link
+						href='/Projects/[slug]'
+						as={`/Projects/${project.slug}`}
+						key={project.slug}
+					>
 						<div
 							className={styles.container}
-							key={index}
 							style={{ backgroundImage: `url(${project?.projectImage?.url})` }}
 						>
 							<div className={styles.titleContainer}>

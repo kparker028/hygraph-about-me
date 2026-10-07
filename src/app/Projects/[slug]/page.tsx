@@ -7,12 +7,15 @@
 // TODO let's add codegen :)
 // 1. https://the-guild.dev/graphql/codegen Read these docs and follow along
 //    Then you will have your queries typed
-import { getProjectDataWTypes } from "@/Fetching/projectsData";
+import { getProjectBySlug } from "@/Fetching/projectsData";
 import Image from "next/image";
 
-const ExpandedProject = async ({ params }: { params: { slug: string } }) => {
-	const project = await getProjectDataWTypes(params);
-	console.log(project);
+const ExpandedProject = async ({
+	params,
+}: {
+	params: Promise<{ slug: string }>;
+}) => {
+	const project = await getProjectBySlug(await params);
 	return (
 		<div
 			style={{

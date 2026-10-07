@@ -4,7 +4,7 @@ import React from "react";
 export const Navbar = () => {
 	return (
 		<nav>
-			<div>Link list</div>
+			<div className='text-fuchsia-700'>Link list</div>
 			<Link href='/'>Home</Link>
 			<Link href='/AboutMe'>About</Link>
 			<Link href='/Projects'>Projects</Link>

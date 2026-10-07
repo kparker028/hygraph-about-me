@@ -1,16 +1,27 @@
 import { graphqlClient } from "@/graphql/client";
 import {
 	GetProjectBySlugDocument,
+	GetProjectBySlugQuery,
 	GetProjectBySlugQueryVariables,
 	GetProjectsDocument,
+	GetProjectsQuery,
+	GetProjectsQueryVariables,
 } from "@/graphql/generated/graphql";
 
-export const getProjectDataWTypes = async (
+export const getProjectBySlug = async (
 	variables: GetProjectBySlugQueryVariables
 ) => {
-	const res = await graphqlClient.request(GetProjectBySlugDocument, variables);
-	return res.project;
+	return (
+		await graphqlClient.request<
+			GetProjectBySlugQuery,
+			GetProjectBySlugQueryVariables
+		>(GetProjectBySlugDocument, variables)
+	).project;
 };
 
 export const getProjects = async () =>
-	await graphqlClient.request(GetProjectsDocument);
+	(
+		await graphqlClient.request<GetProjectsQuery, GetProjectsQueryVariables>(
+			GetProjectsDocument
+		)
+	).projects;

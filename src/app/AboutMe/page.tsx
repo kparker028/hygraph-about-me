@@ -1,16 +1,21 @@
-import { GetAboutMe } from "@/Fetching/aboutMeData";
-import React from "react";
+import { getAboutMe } from "@/Fetching/aboutMeData";
+import Image from "next/image";
 
 const AboutMe = async () => {
-	const data = await GetAboutMe();
-	console.log(data);
-	const { blogPage } = data;
+	const blogPage = await getAboutMe();
 	return (
 		<div>
 			<p>{blogPage?.title}</p>
 			<p>{blogPage?.description}</p>
 			<p>{blogPage?.slug} </p>
-			<img alt='@' src={blogPage?.heroImage?.url} />
+			{blogPage?.heroImage?.url && (
+				<Image
+					alt={blogPage.title ?? "About me"}
+					src={blogPage.heroImage.url}
+					width={800}
+					height={450}
+				/>
+			)}
 		</div>
 	);
 };
