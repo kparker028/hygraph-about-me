@@ -1,9 +1,15 @@
+import "dotenv/config";
 import type { CodegenConfig } from "@graphql-codegen/cli";
 
+const hygraphApiUrl = process.env.HYGRAPH_API_URL;
+
+if (!hygraphApiUrl) {
+	throw new Error("HYGRAPH_API_URL is required.");
+}
+
 const config: CodegenConfig = {
-	schema:
-		"https://api-us-west-2.hygraph.com/v2/clijay9gg0b9r01uiate67quk/master?introspection", // Update with your introspection URL
-	documents: ["./src/graphql/**/*.ts", "!./src/graphql/generated/*.ts"],
+	schema: `${hygraphApiUrl}?introspection`,
+	documents: ["./src/features/**/*.graphql"],
 	generates: {
 		"./src/graphql/generated/": {
 			preset: "client",

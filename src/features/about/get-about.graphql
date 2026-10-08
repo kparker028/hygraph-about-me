@@ -1,0 +1,10 @@
+query GetAboutMe {
+  blogPage(where: { slug: "about-me" }) {
+    title
+    description
+    slug
+    heroImage {
+      url
+    }
+  }
+}

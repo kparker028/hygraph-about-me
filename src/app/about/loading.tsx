@@ -6,7 +6,7 @@ const Loading = () => (
 		role='status'
 	>
 		<LoaderCircle aria-hidden='true' className='size-6 animate-spin' />
-		<span className='sr-only'>Loading about me</span>
+		<span className='sr-only'>Loading about</span>
 	</div>
 );
 

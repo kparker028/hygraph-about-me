@@ -1,7 +1,9 @@
-import { getAboutMe } from "@/Fetching/aboutMeData";
+import { getAboutMe } from "@/features/about/get-about";
 import Image from "next/image";
 
-const AboutMe = async () => {
+export const revalidate = 3600;
+
+export default async function AboutPage() {
 	const blogPage = await getAboutMe();
 	return (
 		<div>
@@ -18,6 +20,4 @@ const AboutMe = async () => {
 			)}
 		</div>
 	);
-};
-
-export default AboutMe;
+}

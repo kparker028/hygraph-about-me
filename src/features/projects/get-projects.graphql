@@ -1,0 +1,10 @@
+query GetProjects {
+  projects {
+    projectName
+    description
+    projectImage {
+      url
+    }
+    slug
+  }
+}

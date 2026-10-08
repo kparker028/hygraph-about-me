@@ -1,13 +1,14 @@
 .section {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, 500px);
-	gap: 32px;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+	gap: 2rem;
+	padding: 2rem;
 }
 
 .container {
 	display: flex;
-	width: 450px;
-	height: 450px;
+	min-height: 20rem;
+	width: 100%;
 	background-size: cover;
 	background-position: center;
 	border-radius: 10px;
@@ -35,8 +36,8 @@
 .title {
 	font-size: 1.8rem;
 	font-weight: 800;
-	white-space: nowrap;
 	color: #fff;
+	text-align: center;
 }
 
 .description {
