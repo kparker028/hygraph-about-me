@@ -11,7 +11,9 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "eslint .",
-		"generate": "graphql-codegen"
+		"typecheck": "tsc --noEmit",
+		"generate": "graphql-codegen",
+		"check": "npm run lint && npm run typecheck && npm run build"
 	},
 	"dependencies": {
 		"@tanstack/react-query": "^4.39.1",
