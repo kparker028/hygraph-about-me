@@ -12,16 +12,18 @@ export default async function ProjectsPage() {
 			{projects?.map((project) => (
 				<Link href={`/projects/${project.slug}`} key={project.slug}>
 					<div
-						className={styles.container}
+						className='cursor-pointer bg-cover bg-center flex w-full min-h-80 shadow-2xl relative overflow-hidden rounded-[50px] [corner-shape:squircle]'
 						style={
 							project.projectImage?.url
 								? { backgroundImage: `url(${project.projectImage.url})` }
 								: undefined
 						}
 					>
-						<div className={styles.titleContainer}>
+						<div
+							className={`${styles.titleContainer} absolute inset-0 overflow-hidden [corner-shape:squircle]`}
+						>
 							<h2 className={styles.title}>{project.projectName}</h2>
-							<p className={styles.description}>{project.description}</p>
+							{/* <p className={styles.description}>{project.description}</p> */}
 						</div>
 					</div>
 				</Link>

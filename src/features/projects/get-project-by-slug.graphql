@@ -1,9 +1,12 @@
 query GetProjectBySlug($slug: String!) {
-  project(where: { slug: $slug }) {
-    projectName
-    description
-    projectImage {
-      url
-    }
-  }
+	project(where: { slug: $slug }) {
+		projectName
+		description
+		projectImage {
+			url
+		}
+		scope {
+			raw
+		}
+	}
 }

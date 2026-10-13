@@ -1,5 +1,3 @@
 export default function Home() {
-	return (
-		<main className='bg-black w-full h-full' />
-	);
+	return <main className='min-h-screen bg-background' />;
 }

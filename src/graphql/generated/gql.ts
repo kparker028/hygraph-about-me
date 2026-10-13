@@ -15,12 +15,12 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 type Documents = {
     "query GetAboutMe {\n  blogPage(where: {slug: \"about-me\"}) {\n    title\n    description\n    slug\n    heroImage {\n      url\n    }\n  }\n}": typeof types.GetAboutMeDocument,
-    "query GetProjectBySlug($slug: String!) {\n  project(where: {slug: $slug}) {\n    projectName\n    description\n    projectImage {\n      url\n    }\n  }\n}": typeof types.GetProjectBySlugDocument,
+    "query GetProjectBySlug($slug: String!) {\n  project(where: {slug: $slug}) {\n    projectName\n    description\n    projectImage {\n      url\n    }\n    scope {\n      raw\n    }\n  }\n}": typeof types.GetProjectBySlugDocument,
     "query GetProjects {\n  projects {\n    projectName\n    description\n    projectImage {\n      url\n    }\n    slug\n  }\n}": typeof types.GetProjectsDocument,
 };
 const documents: Documents = {
     "query GetAboutMe {\n  blogPage(where: {slug: \"about-me\"}) {\n    title\n    description\n    slug\n    heroImage {\n      url\n    }\n  }\n}": types.GetAboutMeDocument,
-    "query GetProjectBySlug($slug: String!) {\n  project(where: {slug: $slug}) {\n    projectName\n    description\n    projectImage {\n      url\n    }\n  }\n}": types.GetProjectBySlugDocument,
+    "query GetProjectBySlug($slug: String!) {\n  project(where: {slug: $slug}) {\n    projectName\n    description\n    projectImage {\n      url\n    }\n    scope {\n      raw\n    }\n  }\n}": types.GetProjectBySlugDocument,
     "query GetProjects {\n  projects {\n    projectName\n    description\n    projectImage {\n      url\n    }\n    slug\n  }\n}": types.GetProjectsDocument,
 };
 
@@ -45,7 +45,7 @@ export function graphql(source: "query GetAboutMe {\n  blogPage(where: {slug: \"
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query GetProjectBySlug($slug: String!) {\n  project(where: {slug: $slug}) {\n    projectName\n    description\n    projectImage {\n      url\n    }\n  }\n}"): (typeof documents)["query GetProjectBySlug($slug: String!) {\n  project(where: {slug: $slug}) {\n    projectName\n    description\n    projectImage {\n      url\n    }\n  }\n}"];
+export function graphql(source: "query GetProjectBySlug($slug: String!) {\n  project(where: {slug: $slug}) {\n    projectName\n    description\n    projectImage {\n      url\n    }\n    scope {\n      raw\n    }\n  }\n}"): (typeof documents)["query GetProjectBySlug($slug: String!) {\n  project(where: {slug: $slug}) {\n    projectName\n    description\n    projectImage {\n      url\n    }\n    scope {\n      raw\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
